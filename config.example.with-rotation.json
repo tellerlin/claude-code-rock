@@ -1,0 +1,27 @@
+{
+  "APIKEY_optional": "(Optional) Set this field to enable global API authentication. Remove this line if not needed.",
+  "PROXY_URL": "http://127.0.0.1:7890",
+  "LOG": true,
+  "HOST": "0.0.0.0",
+  "Providers": [
+    {
+      "name": "gemini",
+      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
+      "api_keys": [
+        "YOUR_GEMINI_API_KEY_HERE"
+      ],
+      "enable_rotation": true,
+      "rotation_strategy": "round_robin",
+      "retry_on_failure": true,
+      "max_retries": 3,
+      "models": ["gemini-2.5-pro"],
+      "transformer": { "use": ["gemini"] }
+    }
+  ],
+  "Router": {
+    "default": "gemini,gemini-2.5-pro",
+    "background": "gemini,gemini-2.5-pro",
+    "think": "gemini,gemini-2.5-pro",
+    "longContext": "gemini,gemini-2.5-pro"
+  }
+} 

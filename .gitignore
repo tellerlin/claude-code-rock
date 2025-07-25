@@ -1,0 +1,11 @@
+node_modules
+.env
+log.txt
+.idea
+dist
+
+# Claude Code Rock configuration files
+~/.claude-code-rock/
+.claude-code-rock/
+*.pid
+claude-code-rock.log

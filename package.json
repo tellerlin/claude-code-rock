@@ -1,0 +1,42 @@
+{
+  "name": "@tellerlin/claude-code-rock",
+  "version": "1.1.2",
+  "description": "Use Claude Code without an Anthropics account and route it to another LLM provider",
+  "bin": {
+    "ccr": "./dist/cli.js",
+    "ccr-test": "./scripts/ccr-test.js"
+  },
+  "scripts": {
+    "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/cli.js --banner:node=\"#!/usr/bin/env node\" --external:./package.json && esbuild scripts/ccr-test.ts --bundle --platform=node --outfile=scripts/ccr-test.js --banner:node=\"#!/usr/bin/env node\" --external:./package.json && shx cp node_modules/tiktoken/tiktoken_bg.wasm dist/tiktoken_bg.wasm"
+  },
+  "keywords": [
+    "claude",
+    "code",
+    "router",
+    "llm",
+    "anthropic"
+  ],
+  "author": "musistudio",
+  "license": "MIT",
+  "dependencies": {
+    "@musistudio/llms": "^1.0.8",
+    "tiktoken": "^1.0.21",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.9",
+    "esbuild": "^0.25.1",
+    "fastify": "^5.4.0",
+    "shx": "^0.4.0",
+    "typescript": "^5.8.2"
+  },
+  "files": [
+    "dist/",
+    "scripts/",
+    "config.example.json",
+    "config.example.with-rotation.json",
+    "README.md",
+    "README_zh.md",
+    "LICENSE"
+  ]
+}
