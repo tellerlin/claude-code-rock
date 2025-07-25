@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Key Development Commands
 - Build: `npm run build`
-- Start: `npm start`
+- Start: `cco start`
 
 ## Architecture
-- Uses `express` for routing (see `src/server.ts`)
+- Uses `@musistudio/llms` for the server (see `src/server.ts`)
 - Bundles with `esbuild` for CLI distribution
 - Plugins are loaded from `$HOME/.claude-code-rock/plugins`

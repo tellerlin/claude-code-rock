@@ -7,7 +7,7 @@
     "cco-test": "./scripts/cco-test.js"
   },
   "scripts": {
-    "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/cli.js --banner:js=\"#/usr/bin/env node\" --external:node-fetch && esbuild scripts/cco-test.ts --bundle --platform=node --outfile=scripts/cco-test.js --banner:js=\"#/usr/bin/env node\" --external:node-fetch && shx cp node_modules/tiktoken/tiktoken_bg.wasm dist/tiktoken_bg.wasm",
+    "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/cli.js --external:node-fetch && esbuild scripts/cco-test.ts --bundle --platform=node --outfile=scripts/cco-test.js --external:node-fetch && shx cp node_modules/tiktoken/tiktoken_bg.wasm dist/tiktoken_bg.wasm",
     "release": "standard-version",
     "prepublishOnly": "npm run build",
     "publish:all": "npm run release && git push --follow-tags origin main && npm publish --access public"

@@ -146,7 +146,6 @@ async function main() {
       }
       break;
     case "test":
-      const { spawn } = require("child_process");
       const scriptPath = join(__dirname, "../scripts/cco-test.js");
       spawn("node", [scriptPath], { stdio: "inherit" });
       break;
