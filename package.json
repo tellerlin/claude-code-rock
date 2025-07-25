@@ -1,13 +1,16 @@
 {
   "name": "@tellerlin/claude-code-rock",
-  "version": "1.1.2",
+  "version": "1.1.10",
   "description": "Use Claude Code without an Anthropics account and route it to another LLM provider",
   "bin": {
-    "ccr": "./dist/cli.js",
-    "ccr-test": "./scripts/ccr-test.js"
+    "cco": "./dist/cli.js",
+    "cco-test": "./scripts/cco-test.js"
   },
   "scripts": {
-    "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/cli.js --banner:node=\"#!/usr/bin/env node\" --external:./package.json && esbuild scripts/ccr-test.ts --bundle --platform=node --outfile=scripts/ccr-test.js --banner:node=\"#!/usr/bin/env node\" --external:./package.json && shx cp node_modules/tiktoken/tiktoken_bg.wasm dist/tiktoken_bg.wasm"
+    "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/cli.js --banner:js=\"#/usr/bin/env node\" --external:node-fetch && esbuild scripts/cco-test.ts --bundle --platform=node --outfile=scripts/cco-test.js --banner:js=\"#/usr/bin/env node\" --external:node-fetch && shx cp node_modules/tiktoken/tiktoken_bg.wasm dist/tiktoken_bg.wasm",
+    "release": "standard-version",
+    "prepublishOnly": "npm run build",
+    "publish:all": "npm run release && git push --follow-tags origin main && npm publish --access public"
   },
   "keywords": [
     "claude",
@@ -18,6 +21,15 @@
   ],
   "author": "musistudio",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tellerlin/claude-code-rock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tellerlin/claude-code-rock/issues"
+  },
+  "homepage": "https://github.com/tellerlin/claude-code-rock#readme",
+  "private": false,
   "dependencies": {
     "@musistudio/llms": "^1.0.8",
     "tiktoken": "^1.0.21",
@@ -25,9 +37,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.19.9",
-    "esbuild": "^0.25.1",
+    "esbuild": "^0.25.8",
     "fastify": "^5.4.0",
     "shx": "^0.4.0",
+    "standard-version": "^9.5.0",
     "typescript": "^5.8.2"
   },
   "files": [

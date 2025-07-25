@@ -6,13 +6,13 @@
 
 ## 📋 Fork Information
 
-This is a fork of [musistudio/claude-code-rock](https://github.com/musistudio/claude-code-rock) with additional **API Key Rotation** functionality.
+This is a fork of [musistudio/claude-code-router](https://github.com/musistudio/claude-code-router) with additional **API Key Rotation** functionality.
 
 ### 🆕 New Features in This Fork
 
 - **API Key Rotation**: Support for multiple API keys with automatic rotation
 - **Smart Error Handling**: Automatic retry with the next available key, failure counting, and a cooldown mechanism to handle temporary outages.
-- **Status Monitoring**: Real-time monitoring of API key status via the `ccr status` and `ccr rotation` commands.
+- **Status Monitoring**: Real-time monitoring of API key status via the `cco status` and `cco rotation` commands.
 - **Enhanced CLI**: Improved command-line interface with detailed status information
 - **Background Service**: Automatic service management with proper cleanup
 - **Comprehensive Testing**: Built-in testing for all API keys and models
@@ -37,8 +37,8 @@ This is a fork of [musistudio/claude-code-rock](https://github.com/musistudio/cl
 ### 🆕 New Features in This Fork
 - **API Key Rotation**: Automatically rotates through a list of API keys for higher availability.
 - **Smart Error Handling**: Automatically retries failed requests with the next available key, tracks failure counts, and implements a cooldown period for temporarily failing keys.
-- **Status Monitoring**: Real-time monitoring of each API key's status (active, unused, failed) via the `ccr status` command.
--   **Enhanced Testing**: Comprehensive testing suite with `ccr test` command for all models and API keys
+- **Status Monitoring**: Real-time monitoring of each API key's status (active, unused, failed) via the `cco status` command.
+-   **Enhanced Testing**: Comprehensive testing suite with `cco test` command for all models and API keys
 -   **Background Service Management**: Proper service lifecycle with automatic startup and cleanup
 
 ## 🚀 Getting Started
@@ -62,7 +62,7 @@ npm install -g @tellerlin/claude-code-rock
 #### Quick Setup (Recommended)
 ```bash
 # Use the automatic setup command
-ccr setup
+cco setup
 ```
 
 This will automatically:
@@ -107,7 +107,7 @@ code ~/.claude-code-rock/config.json
 To test your Gemini API keys and generate a config file with only valid keys, run:
 
 ```bash
-npx ts-node scripts/ccr-keytest.ts
+npx ts-node scripts/cco-keytest.ts
 ```
 
 - The script will prompt you to paste your keys, test them, and output a config file.
@@ -161,47 +161,47 @@ You can review and copy the valid keys from this file to your main `config.json`
 
 ```bash
 # Start background service
-ccr start
+cco start
 
 # Stop background service
-ccr stop
+cco stop
 
 # View service status and API key rotation information
-ccr status
+cco status
 
 # View detailed API key rotation status
-ccr rotation
+cco rotation
 
 # Execute Claude Code (auto-starts service if needed)
-ccr code "Write a Hello World program"
+cco code "Write a Hello World program"
 
 # Test all models and API keys in config.json
-ccr test
+cco test
 
 # Initialize configuration
-ccr setup
+cco setup
 
 # View version
-ccr -v
+cco -v
 
 # View help
-ccr -h
+cco -h
 ```
 
 ### Service Management
 
 Claude Code Rock operates as a background service:
 
-- **`ccr start`**: Start the background service (runs on port 3456)
-- **`ccr stop`**: Stop the background service
-- **`ccr status`**: View service status including API key rotation information
-- **`ccr code`**: Execute Claude Code commands (automatically starts service if needed)
+- **`cco start`**: Start the background service (runs on port 3456)
+- **`cco stop`**: Stop the background service
+- **`cco status`**: View service status including API key rotation information
+- **`cco code`**: Execute Claude Code commands (automatically starts service if needed)
 
 ### Testing and Validation
 
 ```bash
 # Test all configured API keys and models
-ccr test
+cco test
 ```
 
 This command will:
@@ -214,10 +214,10 @@ This command will:
 
 ```bash
 # View basic service status
-ccr status
+cco status
 
 # View detailed API key rotation status
-ccr rotation
+cco rotation
 ```
 
 The status command shows:
@@ -248,7 +248,7 @@ To use the rotation feature, simply provide an array of keys in your `config.jso
 - **Priority-Based Selection**: The router prioritizes keys in this order: `unused` > `active` (least recently used first) > `failed` (after a cooldown period).
 - **Automatic Retries**: If a request with one key fails, the router automatically tries the next available key (up to 3 retries).
 - **Failure Cooldown**: A key that fails 3 consecutive times is marked as `failed` and put into a 5-minute cooldown period before it can be retried.
-- **Status Monitoring**: Use the `ccr status` or `ccr rotation` command to see the real-time status of each key.
+- **Status Monitoring**: Use the `cco status` or `cco rotation` command to see the real-time status of each key.
 
 ### Status Monitoring
 
@@ -256,10 +256,10 @@ Monitor API key rotation with built-in commands:
 
 ```bash
 # Basic status (includes rotation info)
-ccr status
+cco status
 
 # Detailed rotation status
-ccr rotation
+cco rotation
 ```
 
 Example output:
@@ -394,13 +394,13 @@ All Claude Code parameters are supported:
 
 ```bash
 # Skip permission prompts
-ccr code --dangerously-skip-permissions
+cco code --dangerously-skip-permissions
 
 # Get help for Claude Code
-ccr code --help
+cco code --help
 
 # Direct commands
-ccr code "Explain this codebase"
+cco code "Explain this codebase"
 ```
 
 ## 🔍 FAQ
@@ -409,7 +409,7 @@ ccr code "Explain this codebase"
 
 **A**: Use the built-in test command:
 ```bash
-ccr test
+cco test
 ```
 This tests all API keys and models, showing detailed results.
 
@@ -425,8 +425,8 @@ This tests all API keys and models, showing detailed results.
 
 **A**: Use the status commands:
 ```bash
-ccr status      # Basic status
-ccr rotation    # Detailed rotation status
+cco status      # Basic status
+cco rotation    # Detailed rotation status
 ```
 
 ### Q: Can I use different rotation strategies?
@@ -457,7 +457,7 @@ ccr rotation    # Detailed rotation status
 
 2. **Test API keys**:
    ```bash
-   ccr test
+   cco test
    ```
 
 3. **Check port availability**:
@@ -476,18 +476,18 @@ ccr rotation    # Detailed rotation status
 
 1. **Test individual keys**:
    ```bash
-   ccr test
+   cco test
    ```
 
 2. **Check rotation status**:
    ```bash
-   ccr rotation
+   cco rotation
    ```
 
 3. **Reset service** (clears key failure counts):
    ```bash
-   ccr stop
-   ccr start
+   cco stop
+   cco start
    ```
 
 ### Network Issues

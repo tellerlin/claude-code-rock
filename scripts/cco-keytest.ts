@@ -146,9 +146,9 @@ async function main() {
   };
   if (proxyUrl) config.PROXY_URL = proxyUrl;
   const homeDir = os.homedir();
-  const ccrDir = `${homeDir}/.claude-code-rock`;
-  if (!existsSync(ccrDir)) mkdirSync(ccrDir);
-  const keyFilePath = `${ccrDir}/valid-key-config.json`;
+  const ccoDir = `${homeDir}/.claude-code-rock`;
+  if (!existsSync(ccoDir)) mkdirSync(ccoDir);
+  const keyFilePath = `${ccoDir}/valid-key-config.json`;
   writeFileSync(keyFilePath, JSON.stringify(config, null, 2));
   console.log(`\nValid keys written to ${keyFilePath}. You can review and copy to config.json as needed.`);
 }

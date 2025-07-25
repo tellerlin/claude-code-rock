@@ -52,7 +52,7 @@ export function processConfig(config: any): ProcessedConfig {
   if (config.PROXY_URL && !(process as any).env.HTTPS_PROXY && !(process as any).env.https_proxy) {
     if (config.PROXY_URL.startsWith('socks')) {
       console.warn('⚠️  WARNING: Main service does not support socks5 proxy!');
-      console.warn('⚠️  Only test script (ccr test) supports socks5 proxy.');
+      console.warn('⚠️  Only test script (cco test) supports socks5 proxy.');
       console.warn('⚠️  For main service, please use HTTP proxy or set up HTTP proxy forwarding.');
       console.warn(`⚠️  Current socks5 proxy: ${config.PROXY_URL}`);
       console.warn('⚠️  You can:');

@@ -13,7 +13,7 @@ import {join} from "path";
 const command = process.argv[2];
 
 const HELP_TEXT = `
-Usage: ccr [command]
+Usage: cco [command]
 
 Commands:
   start         Start service 
@@ -27,10 +27,10 @@ Commands:
   -h, help      Show help information
 
 Example:
-  ccr start
-  ccr code "Write a Hello World"
-  ccr rotation  # Show detailed API key rotation status
-  ccr test      # Test all models and API keys in config.json
+  cco start
+  cco code "Write a Hello World"
+  cco rotation  # Show detailed API key rotation status
+  cco test      # Test all models and API keys in config.json
 `;
 
 async function waitForService(
@@ -147,7 +147,7 @@ async function main() {
       break;
     case "test":
       const { spawn } = require("child_process");
-      const scriptPath = join(__dirname, "../scripts/ccr-test.js");
+      const scriptPath = join(__dirname, "../scripts/cco-test.js");
       spawn("node", [scriptPath], { stdio: "inherit" });
       break;
     case "setup":

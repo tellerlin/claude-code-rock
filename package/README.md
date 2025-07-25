@@ -37,7 +37,7 @@ This is a fork of [musistudio/claude-code-rock](https://github.com/musistudio/cl
 -   **API Key Rotation**: Support for multiple API keys with automatic rotation and load balancing
 -   **Multiple Rotation Strategies**: round_robin, random, weighted, least_used
 -   **Smart Error Handling**: Automatic retry, failure counting, cooldown mechanism
--   **Status Monitoring**: Real-time monitoring of API key rotation status via `ccr rotation` command
+-   **Status Monitoring**: Real-time monitoring of API key rotation status via `cco rotation` command
 
 ## 🚀 Getting Started
 
@@ -60,7 +60,7 @@ npm install -g @tellerlin/claude-code-rock
 #### Step 1: Quick Setup (Recommended)
 ```bash
 # Use the automatic setup command
-ccr setup
+cco setup
 ```
 
 This will automatically create the configuration directory and copy the template file.
@@ -171,7 +171,7 @@ Replace the placeholder values in the configuration file:
 If this is your first time running the tool, it will guide you through an interactive setup:
 
 ```bash
-ccr code
+cco code
 ```
 
 The system will ask you to provide:
@@ -184,14 +184,14 @@ The system will ask you to provide:
 After configuration, simply run:
 
 ```bash
-ccr code
+cco code
 ```
 
 #### Test All API Keys and Models
 To quickly verify all your configured API keys and models are working, use:
 
 ```bash
-ccr test
+cco test
 ```
 
 This will automatically test every model+apikey combination in your config.json and print detailed logs for troubleshooting.
@@ -201,13 +201,13 @@ To check if everything is working:
 
 ```bash
 # Check service status
-ccr status
+cco status
 
 # Check version
-ccr -v
+cco -v
 
 # Get help
-ccr -h
+cco -h
 ```
 
 ## 🔄 API Key Rotation Feature
@@ -334,10 +334,10 @@ The system fully supports backward compatibility:
 #### View Rotation Status
 ```bash
 # View basic status (includes rotation information)
-ccr status
+cco status
 
 # View detailed rotation status
-ccr rotation
+cco rotation
 ```
 
 #### Status Information
@@ -361,46 +361,46 @@ ccr rotation
 
 ```bash
 # Start service
-ccr start
+cco start
 
 # Stop service
-ccr stop
+cco stop
 
 # View service status (includes API Key rotation information)
-ccr status
+cco status
 
 # View detailed API Key rotation status
-ccr rotation
+cco rotation
 
 # Execute code command
-ccr code
+cco code
 
 # Test all models and API keys in config.json
-ccr test
+cco test
 
 # View version
-ccr -v
+cco -v
 
 # View help
-ccr -h
+cco -h
 ```
 
 ### Service Management
 
 Claude Code Rock supports background service mode:
 
-- **`ccr start`**: Start background service, runs on port 3456
-- **`ccr stop`**: Stop background service
-- **`ccr status`**: View service running status and API Key rotation status
-- **`ccr rotation`**: View detailed API Key rotation status, including usage and failure count for each Key
+- **`cco start`**: Start background service, runs on port 3456
+- **`cco stop`**: Stop background service
+- **`cco status`**: View service running status and API Key rotation status
+- **`cco rotation`**: View detailed API Key rotation status, including usage and failure count for each Key
 
 ### Automatic Service Startup
 
-When you run `ccr code`, if the service is not running, the system will automatically start it:
+When you run `cco code`, if the service is not running, the system will automatically start it:
 
 ```bash
 # If service is not running, it will start automatically
-ccr code "Write a Hello World program"
+cco code "Write a Hello World program"
 ```
 
 ### Dynamic Model Switching
@@ -419,15 +419,15 @@ Examples:
 
 ### Passing Parameters to Claude Code
 
-Claude Code Rock supports passing any parameters to the original Claude Code. You can add any Claude Code supported parameters after the `ccr code` command:
+Claude Code Rock supports passing any parameters to the original Claude Code. You can add any Claude Code supported parameters after the `cco code` command:
 
 ```bash
 # Use --dangerously-skip-permissions parameter
-ccr code --dangerously-skip-permissions
+cco code --dangerously-skip-permissions
 
 # Pass other parameters
-ccr code --help
-ccr code "Write a Hello World program"
+cco code --help
+cco code "Write a Hello World program"
 ```
 
 ## 🔧 Configuration Details
@@ -500,7 +500,7 @@ Transformers are used to handle compatibility issues between different provider 
 **A**: Use the following command directly:
 
 ```bash
-ccr code --dangerously-skip-permissions
+cco code --dangerously-skip-permissions
 ```
 
 Claude Code Rock passes all parameters directly to the original Claude Code, so it supports all native Claude Code parameters.
@@ -570,7 +570,7 @@ Claude Code Rock passes all parameters directly to the original Claude Code, so 
 6. **Test All API Keys and Models**:
    ```bash
    # Use the built-in test command to check all configured API keys and models
-   ccr test
+   cco test
    ```
    This will help you quickly identify which key or model is failing and provide detailed error logs.
 

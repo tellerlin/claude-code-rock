@@ -1,4 +1,5 @@
 #!/usr/bin/env ts-node
+#/usr/bin/env node
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -20661,7 +20662,7 @@ var require_undici = __commonJS({
   }
 });
 
-// scripts/ccr-test.ts
+// scripts/cco-test.ts
 var import_fs = require("fs");
 var import_path = require("path");
 var import_os = require("os");

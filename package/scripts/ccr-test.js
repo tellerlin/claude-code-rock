@@ -23,7 +23,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// scripts/ccr-test.ts
+// scripts/cco-test.ts
 var import_fs = __toESM(require("fs"));
 var import_path = __toESM(require("path"));
 var import_process = __toESM(require("process"));

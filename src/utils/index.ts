@@ -64,12 +64,12 @@ export const readConfigFile = async () => {
       console.error(`   Expected location: ${CONFIG_FILE}`);
       console.error("");
       console.error("📝 Please create the configuration file first:");
-      console.error("   1. Run: ccr-setup (recommended)");
+      console.error("   1. Run: cco-setup (recommended)");
       console.error("   2. Or manually create the config file:");
       console.error(`      mkdir -p ~/.claude-code-rock`);
       console.error(`      cp $(npm root -g)/@tellerlin/claude-code-rock/config.example.with-rotation.json ~/.claude-code-rock/config.json`);
       console.error("");
-      console.error("🔧 Then edit the config file with your API keys and run ccr code again.");
+      console.error("🔧 Then edit the config file with your API keys and run cco code again.");
       process.exit(1);
     } else {
       // 其他错误（如JSON解析错误）

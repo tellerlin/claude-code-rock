@@ -1,13 +1,13 @@
 {
   "name": "@tellerlin/claude-code-rock",
-  "version": "1.1.1",
+  "version": "1.1.10",
   "description": "Use Claude Code without an Anthropics account and route it to another LLM provider",
   "bin": {
-    "ccr": "dist/cli.js",
-    "ccr-setup": "scripts/setup-config.js"
+    "cco": "dist/cli.js",
+    "cco-setup": "scripts/setup-config.js"
   },
   "scripts": {
-    "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/cli.js --external:./package.json && esbuild scripts/ccr-test.ts --bundle --platform=node --outfile=scripts/ccr-test.js --external:./package.json && shx cp node_modules/tiktoken/tiktoken_bg.wasm dist/tiktoken_bg.wasm"
+    "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/cli.js --external:./package.json && esbuild scripts/cco-test.ts --bundle --platform=node --outfile=scripts/cco-test.js --external:./package.json && shx cp node_modules/tiktoken/tiktoken_bg.wasm dist/tiktoken_bg.wasm"
   },
   "keywords": [
     "claude",
