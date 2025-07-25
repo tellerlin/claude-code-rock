@@ -58,7 +58,7 @@ export const readConfigFile = async () => {
     
     return parsedConfig;
   } catch (error) {
-    if (error.code === 'ENOENT') {
+    if (error instanceof Error && (error as any).code === 'ENOENT') {
       // 配置文件不存在
       console.error("❌ Configuration file not found!");
       console.error(`   Expected location: ${CONFIG_FILE}`);
@@ -74,7 +74,11 @@ export const readConfigFile = async () => {
     } else {
       // 其他错误（如JSON解析错误）
       console.error("❌ Failed to read configuration file:");
-      console.error(`   ${error.message}`);
+      if (error instanceof Error) {
+        console.error(`   ${error.message}`);
+      } else {
+        console.error('   Unknown error');
+      }
       console.error("");
       console.error("🔧 Please check your configuration file format and try again.");
       process.exit(1);

@@ -20,6 +20,8 @@ import { keyManagerService } from "./services/KeyManagerService";
 // 声明全局变量
 declare var process: any;
 
+const CONFIG_FILE = 'config.json';
+
 async function initializeClaudeConfig() {
   const homeDir = homedir();
   const configPath = join(homeDir, ".claude.json");
@@ -109,7 +111,7 @@ async function run(options: RunOptions = {}) {
   // Register a single route to handle all proxied requests
   server.app.post('/v1/messages', {
     preHandler: apiKeyAuth(processedConfig.global),
-    handler: (req, reply) => router(req, reply, processedConfig, server.app._server)
+    handler: (req: any, reply: any) => router(req, reply, processedConfig, server.app._server)
   });
   
   try {

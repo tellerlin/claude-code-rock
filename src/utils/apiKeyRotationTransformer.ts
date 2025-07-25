@@ -118,7 +118,8 @@ export class ApiKeyRotationTransformer {
       // Skip if we've already tried this key in this request
       if (usedKeys.has(apiKey)) {
         // If we've tried all available keys, wait longer before retrying
-        if (usedKeys.size >= this.rotators.get(providerName)?.getAvailableKeyCount() || 0) {
+        const availableCount = this.rotators.get(providerName)?.getAvailableKeyCount() ?? 0;
+        if (usedKeys.size >= availableCount) {
           await this.delay(2000 * (attempt + 1));
         }
         continue;

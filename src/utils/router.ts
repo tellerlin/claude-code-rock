@@ -65,8 +65,8 @@ export const router = async (req: FastifyRequest, reply: FastifyReply, config: a
     if (Array.isArray(tools)) {
       tools.forEach((tool) => {
         if (tool.name) tokenCount += enc.encode(tool.name).length;
-        if (tool.description) tokenCount += enc.encode(tool.description).length;
-        if (tool.input_schema) tokenCount += enc.encode(JSON.stringify(tool.input_schema)).length;
+        if ('description' in tool && tool.description) tokenCount += enc.encode(tool.description).length;
+        if ('input_schema' in tool && tool.input_schema) tokenCount += enc.encode(JSON.stringify(tool.input_schema)).length;
       });
     }
   } catch (error: any) {
